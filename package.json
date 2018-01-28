@@ -1,0 +1,53 @@
+{
+    "name": "stackoverflow-search",
+    "displayName": "stackoverflow-search",
+    "description": "",
+    "version": "0.0.1",
+    "publisher": "Jacky",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:SO-search-ext.SO"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "SO-search-ext.SO",
+				"title": "Search Stack Overflow",
+				"description": "Search Stack Overflow on selections"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "SO-search-ext.SO",
+                "key": "Alt+R"
+            }
+        ],
+        "menus": {
+            "explorer/context": [{
+                "command": "SO-search-ext.SO",
+                "when": "editorHasSelection"
+            }
+            ]
+        }
+        
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
